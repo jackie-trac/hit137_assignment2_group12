@@ -46,6 +46,6 @@ def process_file(text_file, output_csv, chunk_size=16384):
     print(f"30 most common words have been extracted to {output_csv}")
 
 if __name__ == "__main__":
-    text_file = 'q1_task1_alltext.txt'  # Path to the input text file
-    output_csv = 'top_30_words.csv'  # Path to the output CSV file
+    text_file = 'q1_task1_alltext_nonnumeric.txt'  # Write your own path
+    output_csv = 'top_30_words_builtin.csv'  # Path to the output CSV file
     process_file(text_file, output_csv)

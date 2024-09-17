@@ -1,3 +1,7 @@
+'''
+Question 1 - Task 3.2. This version excludes all sub-words, nonwords and only returns words
+'''
+#VERSION 2 - TOP 30 UNIQUE WORDS
 from transformers import AutoTokenizer
 from collections import Counter
 import csv
@@ -61,6 +65,6 @@ def process_file_with_transformer(text_file, output_csv, model_name="bert-base-u
     print(f"30 most common words have been extracted to {output_csv}")
 
 if __name__ == "__main__":
-    text_file = 'q1_task1_alltext.txt'  # Path to the input text file
+    text_file = 'q1_task1_alltext_nonnumeric.txt'  # Path to the input text file
     output_csv = 'top_30_words_transformers.csv'  # Path to the output CSV file
     process_file_with_transformer(text_file, output_csv)

@@ -1,3 +1,8 @@
+'''
+Question 1 - Task 3.2 requires to count unique tokens and give top 30 words.
+Since tokens can be special characters, sub-words and nonwords this version of code takes into account all tokens.  
+'''
+#VERSION 1 - TOP 30 UNIQUE TOKENS
 from transformers import AutoTokenizer
 from collections import Counter
 import csv
@@ -54,6 +59,6 @@ def process_file_with_tokens(text_file, output_csv, model_name="bert-base-uncase
     print(f"30 most common tokens have been extracted to {output_csv}")
 
 if __name__ == "__main__":
-    text_file = 'q1_task1_alltext.txt'  # Path to the input text file
-    output_csv = 'top_30_tokens_transformers_token.csv'  # Path to the output CSV file
+    text_file = 'q1_task1_alltext_nonnumeric.txt'  # Path to the input text file
+    output_csv = 'top_30_tokens_transformers.csv'  # Path to the output CSV file
     process_file_with_tokens(text_file, output_csv)

@@ -38,7 +38,7 @@ for x in range(width):
         pixels[x, y] = (r, g, b)
 
 # Save the modified image
-output_image_path = "chapter2_modified.png"
+output_image_path = "chapter1out.png"
 image.save(output_image_path)
 
 # Print the result
@@ -46,6 +46,6 @@ print(f"Modified image saved as {output_image_path}")
 
 '''
 OUTPUT:
-Number 133 was generated at 2024-09-18 20:48:03
-Modified image saved as chapter2_modified.png
+Number 141 was generated at 2024-09-18 20:49:51
+Modified image saved as chapter1out.png
 '''

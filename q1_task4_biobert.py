@@ -1,3 +1,11 @@
+'''
+OUTPUT
+The file is too large and takes very long to process. 
+We've tried another way which allows immediate write entities on the go but that one couldn't achieve counting 
+unique total entities and report most common words. 
+We think this version of code could cover the requirements only limited by computation power.
+Processing BioBERT: 15.20% complete (After 12hours running)
+'''
 import os
 import warnings
 import csv
@@ -83,3 +91,4 @@ def main_biobert():
 
 # Run the BioBERT program
 main_biobert()
+

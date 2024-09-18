@@ -1,55 +1,51 @@
 from PIL import Image
 import time
-
-
+'''
+STEP 1: Run the provided code to reveal number based on real-time
+Added variable 'formatted_time' is added to show the time the code was run
+'''
+# Get the current Unix time
 current_time = int(time.time())
 
+# Format the Unix time to a human-readable format
+formatted_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(current_time))
 
-generated_number_n = ((current_time % 100) * 50) + 50
+# Generate a number based on the current time
+generated_number = (current_time % 100) + 50
 
+if generated_number % 2 == 0:
+    generated_number += 10
 
-if generated_number_n % 2 == 0:
-    generated_number_n = generated_number_n - 10
+# Print the result with the formatted time
+print(f"Number {generated_number} was generated at {formatted_time}")
 
-print(generated_number_n)  
-
-
-image = Image.open("chapter1.jpg")
-
-
+'''
+STEP 2: Adjust the image
+'''
+image_path = "chapter1.jpg"
+image = Image.open(image_path)
 pixels = image.load()
 
-# width and height of chapter1.jpg
+# Iterate over each pixel and modify the RGB values by adding the generated number
 width, height = image.size
-
-# variable to store the sum of modified red pixel values
-total_red_sum = 0
-
-# Iterate through each pixel
 for x in range(width):
     for y in range(height):
-        r, g, b = pixels[x, y]  # RGB values of each pixel
+        r, g, b = pixels[x, y]
+        # Add generated_number to each channel, ensuring values are within 0-255
+        r = min(255, r + generated_number)
+        g = min(255, g + generated_number)
+        b = min(255, b + generated_number)
+        pixels[x, y] = (r, g, b)
 
-        # Calculate average brightness
-        brightness = (r + g + b) / 3
+# Save the modified image
+output_image_path = "chapter2_modified.png"
+image.save(output_image_path)
 
-        # Subtract instead of add if the image is bright 
-        if brightness > 200:
-            new_r = max(0, r - generated_number_n)
-            new_g = max(0, g - generated_number_n)
-            new_b = max(0, b - generated_number_n)
-        else:
-            
-            new_r = max(0, min(255, r + generated_number_n))
-            new_g = max(0, min(255, g + generated_number_n))
-            new_b = max(0, min(255, b + generated_number_n))
+# Print the result
+print(f"Modified image saved as {output_image_path}")
 
-        # Update the pixel with the new RGB values
-        pixels[x, y] = (new_r, new_g, new_b)
-
-        # Add the modified red value to the total sum
-        total_red_sum += new_r
-
-image.save("chapter1out.png")
-
-print("Sum of modified red pixel values:", total_red_sum)
+'''
+OUTPUT:
+Number 133 was generated at 2024-09-18 20:48:03
+Modified image saved as chapter2_modified.png
+'''
